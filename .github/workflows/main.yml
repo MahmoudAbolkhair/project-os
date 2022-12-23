@@ -1,1 +1,27 @@
+on:
+  push:
+    branches:
+      - master
+
+
+
+
+
+
+
+jobs:
+  bulid:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: "Login to Dockerhub"
+        run: docker login --username ${{ secrets.DOCKER_USERNAME10 }} --password dckr_pat_ui2UcV-1TQ_D3roB0Hw2xiXoRX0
+        
+      - name: "Building docker image"
+        run: docker build -t  ${{ secrets.DOCKER_USERNAME10 }}/nginx .
+
+      - name: "Pushing to dockerhub"
+        run: docker push ${{ secrets.DOCKER_USERNAME10 }}/nginx 
 
